@@ -2,13 +2,12 @@ const btn = document.querySelector("#btn")
 const res = document.querySelector(".res")
 
 function garcom() {
-    let ramdom = Math.floor(Math.ramdom() * 1026)
-    let api = fetch(`https://pokeapi.co/api/v2/pokemon/1026${ramdom}`)
-    .then((res) => res.jason())
+    let ramdom = Math.floor(Math.random() * 1026)
+    let api = fetch(`https://pokeapi.co/api/v2/pokemon/${ramdom}`)
+    .then((res) => res.json())
     .then((data) => {
         gerarPokemon(data)
     })
-
 }
 
 function gerarPokemon(data) {
@@ -17,18 +16,16 @@ function gerarPokemon(data) {
     let tipo = data.types[0].type.name
     let img = data.sprites.front_default
 
-    console.log(data.sprites)
-
-    res.innerHTML = `<div class="card">
-                <img src="${img}" alt="">
+    res.innerHTML = ` <div class="card">
+            <img src="${img}" alt="">
             <div class="container">
                 <div class="title">
                     <h1>${nome}</h1>
-                    <p>nº ${id}</p>
+                    <p>n° ${id}</p>
                 </div>
                 <p id="poison">${tipo}</p>
             </div>
         </div>`
 }
 
-btn.addEventListener("click", gerarPokemon)
+btn.addEventListener("click", garcom)
